@@ -1,0 +1,125 @@
+<section class="order">
+    <div class="container">
+        <div class="order-title">Оформление вашего заказа</div>
+        <div class="order-info">
+            <div class="data-form" [formGroup]="orderForm">
+                <div class="data-form-block">
+                    <div class="data-form-label">Выберите способ доставки</div>
+                    <div class="data-form-types">
+                        <div class="data-form-type-item " [class.active]="deliveryType === deliveryTypes.delivery" (click)="changeDeliveryType(deliveryTypes.delivery)">Курьером</div>
+                        <div class="data-form-type-item" [class.active]="deliveryType === deliveryTypes.self" (click)="changeDeliveryType(deliveryTypes.self)">Самовывоз</div>
+                    </div>
+                </div>
+
+                <div class="data-form-block">
+                    <div class="data-form-label">Заполните личные данные</div>
+                    <div class="data-form-person">
+                        <input type="text" class="order-input" placeholder="Фамилия" 
+                            [ngStyle]="{'border-color': orderForm.get('lastName')?.invalid
+                            && (orderForm.get('lastName')?.touched || orderForm.get('lastName')?.dirty) ? 'red' : ''}"  
+                        formControlName="lastName">
+                        <input type="text" class="order-input" placeholder="Имя" 
+                         [ngStyle]="{'border-color': orderForm.get('firstName')?.invalid
+                            && (orderForm.get('firstName')?.touched || orderForm.get('firstName')?.dirty) ? 'red' : ''}"  
+                            formControlName="firstName">
+                        <input type="text" class="order-input" placeholder="Отчество" 
+                         [ngStyle]="{'border-color': orderForm.get('fatherName')?.invalid
+                            && (orderForm.get('fatherName')?.touched || orderForm.get('fatherName')?.dirty) ? 'red' : ''}"  
+                            formControlName="fatherName">
+                        <input type="tel" class="order-input" placeholder="Телефон" 
+                         [ngStyle]="{'border-color': orderForm.get('phone')?.invalid
+                            && (orderForm.get('phone')?.touched || orderForm.get('phone')?.dirty) ? 'red' : ''}"  
+                            formControlName="phone">
+                        <input type="email" class="order-input" placeholder="E-mail" 
+                         [ngStyle]="{'border-color': orderForm.get('email')?.invalid
+                            && (orderForm.get('email')?.touched || orderForm.get('email')?.dirty) ? 'red' : ''}"  
+                            formControlName="email">
+                    </div>
+                </div>
+
+                <div class="data-form-block" *ngIf="deliveryType !== deliveryTypes.self">
+                    <div class="data-form-label">Заполните адрес доставки</div>
+                    <div class="data-form-address">
+                        <input type="text" class="order-input" placeholder="Улица"  [ngStyle]="{'border-color': orderForm.get('street')?.invalid
+                            && (orderForm.get('street')?.touched || orderForm.get('street')?.dirty) ? 'red' : ''}"  
+                             formControlName="street">
+                        <input type="text" class="order-input" placeholder="№ дома"  [ngStyle]="{'border-color': orderForm.get('house')?.invalid
+                            && (orderForm.get('house')?.touched || orderForm.get('house')?.dirty) ? 'red' : ''}"  
+                             formControlName="house">
+                        <input type="text" class="order-input" placeholder="Подъезд"  [ngStyle]="{'border-color': orderForm.get('entrance')?.invalid
+                            && (orderForm.get('entrance')?.touched || orderForm.get('entrance')?.dirty) ? 'red' : ''}"  
+                             formControlName="entrance">
+                        <input type="tel" class="order-input" placeholder="№ квартиры"  [ngStyle]="{'border-color': orderForm.get('apartment')?.invalid
+                            && (orderForm.get('apartment')?.touched || orderForm.get('apartment')?.dirty) ? 'red' : ''}"  
+                             formControlName="apartment">
+                    </div>
+                </div>
+
+                <div class="data-form-block">
+                    <div class="data-form-label">Выберите способ оплаты</div>
+                    <div class="data-form-payment">
+                        <input type="radio" id="cardOnline" value="{{paymentTypes.cardOnline}}" formControlName="paymentType">
+                        <label for="cardOnline">
+                            <div class="circle"><div class="dot"></div></div>
+                            <span>Оплата банковской картой в интернет-магазине</span>
+                        </label>
+                        <input type="radio" id="cardToCourier" value="{{paymentTypes.cardToCourier}}" formControlName="paymentType">
+                        <label for="cardToCourier">
+                            <div class="circle"><div class="dot"></div></div>
+                            <span>Безналичный расчет при получении</span></label>
+                        <input type="radio"id="cashToCourier" checked value="{{paymentTypes.cashToCourier}}" formControlName="paymentType">
+                        <label for="cashToCourier">
+                            <div class="circle"><div class="dot"></div></div>
+                            <span>Наличный расчет при получении</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="data-form-block">
+                    <div class="data-form-label">Комментарий к заказу (необязательно)</div>
+                    <div class="data-form-comment">
+                       <textarea name="comment" id="comment" class="order-input" 
+                       [ngStyle]="{'border-color': orderForm.get('comment')?.invalid
+                       && (orderForm.get('comment')?.touched || orderForm.get('comment')?.dirty) ? 'red' : ''}"  
+                       placeholder="Оставьте свой комментарий..." formControlName="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="order-detail">
+                <div class="order-detail-body">
+                    <div class="order-detail-title">Ваш заказ</div>
+
+                    <div class="order-detail-info">
+                        <div class="order-detail-count">Товаров: <span>{{totalAmount}}</span></div>
+                        <div class="order-detail-price">Общая стоимость: <span>{{totalCount}} BYN</span></div>
+                        <div class="order-detail-delivery-price">Стоимость доставки: <span>10 BYN</span></div>
+                    </div>
+                    
+                    <div class="order-detail-total-price">Итоговая стоимость: <span>{{totalCount + 10}} BYN</span></div>
+                </div>
+                <div class="order-detail-action">
+                    <button class="btn" (click)="createOrder()">Подтвердить заказ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #popup>
+    <div class="order-popup">
+        <div class="order-popup-close" (click)="closePopup()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0.935622" y1="0.649902" x2="12.9564" y2="12.6707" stroke="#A8ABA7" stroke-linecap="round"/>
+                <line x1="12.9238" y1="0.629714" x2="0.903013" y2="12.6505" stroke="#A8ABA7" stroke-linecap="round"/>
+            </svg>                
+        </div>
+        <div class="order-popup-title">
+            Благодарим за заказ!
+        </div>
+        <div class="order-popup-content">
+            <div>Ваш заказ оформлен.</div>
+            <div>Вся информация о заказе была выслана вам на почту.</div>
+            <div>Курьер свяжется с вами за два часа до доставки товара.</div>
+        </div>
+    </div>
+</ng-template>

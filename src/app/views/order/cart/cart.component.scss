@@ -1,0 +1,116 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+
+
+.cart {
+    padding: 50px 0 160px;
+    .container {
+        .cart-title {
+            @include head-lora-32;
+            margin-bottom: 35px;
+        }
+        .cart-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            button {
+                width: 255px;
+            }
+        }
+        .cart-info {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            .products {
+                max-width: 678px;
+                .product {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 80px 231px 119px 110px 31px;
+                    column-gap: 26px;
+                    align-items: center;
+                    padding: 20px 0;
+                    border-top: 1px solid #ebebeb;
+                    &:first-child {
+                        border-top: 0;
+                        padding-top: 0;
+                    }
+                    .product-img {
+                        aspect-ratio: 1/1;
+                        background-position: center;
+                        background-size: cover;
+                        border-radius: 5px;
+                        background-color: grey;
+                    }
+                    .product-name {
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 130%;
+                        color: $base-text-color;
+                    }
+                    .product-count {
+                        margin-right: 25px;
+                    }
+                    .product-cost {
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: #2c2c2c;
+                    }
+                    .product-delete {
+                        svg {
+                            margin-right: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .order-info {
+                width: 501px;
+                .order-info-body {
+                    padding: 40px;
+                    background-color: #E7F1E8;
+                    margin-bottom: 12px;
+                    border-radius: 5px;
+                    .info-title {
+                        font-size: 26px;
+                        font-family: 'Lora', sans-serif;
+                        color: $base-text-color;
+                        margin-bottom: 20px;
+                    }
+                    .info-item {
+                        font-size: 16px;
+                        margin-top: 10px;
+                        span {
+                            font-size: 20px;
+                            font-weight: 500;
+                            margin-left: 12px;
+                        }
+                    }
+                    .info-common {
+                        font-size: 14px;
+                        font-style: italic;
+                        margin-top: 5px;
+                        color: #2C2C2C;
+                    }
+                }
+                .order-info-actions {
+                    display: flex;
+                    column-gap: 12px;
+                    button {
+                        flex-basis: 100%;
+                        &.btn.transparent {
+                            color: #6CAC72;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.products-carousel {
+    padding-bottom: 110px;
+}

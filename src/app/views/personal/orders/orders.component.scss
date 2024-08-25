@@ -1,0 +1,89 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+@import '../../../../assets/styles/data-form';
+@import '../../../../assets/styles/personal';
+
+
+.info .container {
+    .info-label {
+        font-weight: 500;
+        font-size: 16px;
+        color: $gray-text-color;
+        margin-bottom: 20px;
+    }
+
+    .info-label-additional {
+        font-size: 16px;
+        line-height: 130%;
+        color: $gray-text-color;
+        margin-bottom: 72px;
+        max-width: 528px;
+    }
+
+    .orders-empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        button {
+            width: 255px;
+        }
+    }
+
+    .orders-list {
+        .orders-list-item {
+            padding-top: 52px;
+            padding-bottom: 46px;
+            border-top: 1px solid #E7F1E8;
+            display: flex;
+            align-items:baseline;
+            justify-content: space-between;
+
+            &:first-child {
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .order-list-item-number {
+                font-size: 20px;
+                color: #111;
+                margin-right: 20px;
+                text-decoration: underline;
+            }
+            .order-list-item-products {
+                font-size: 16px;
+                color: #adadad;
+                .products-count {
+                    margin-bottom: 12px;
+                }
+                .products-list {
+                    .product {
+                        display: grid;
+                        grid-template-columns: 220px 105px;
+                        gap: 20px;
+                        .product-name {
+                            margin-left: 9px;
+                        }
+                    }
+                }
+            }
+            .order-status {
+                margin-left: 36px;
+                padding: 8px;
+                box-sizing: border-box;
+                width: 125px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 400;
+                border-radius: 50px;
+
+                border: 1px solid #456F49;
+                color: #456F49;
+            }
+            .order-cost {
+                font-size: 22px;
+                font-weight: 500;
+            }
+        }
+    }
+}

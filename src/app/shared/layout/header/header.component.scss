@@ -1,0 +1,180 @@
+@import '../../../../assets/styles/variables';
+
+header.header {
+    padding: 30px 0 49px 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+
+        .header-content {
+            .header-top {
+                padding-top: 32px;
+                padding-bottom: 25px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #c5c5c5;
+
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 500;
+                .header-top-menu {
+                    margin-left: 26px;
+                    margin-right: 191px;
+                    nav ul {
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+
+                        li {
+                            margin-right: 40px;
+                            list-style: none;
+                            border-bottom: 1px solid transparent;
+
+                            &.active {
+                                border-bottom-color: $base-text-color;
+                            }
+
+                            a {
+                                font-size: 16px;
+                                color: $base-text-color;
+                                cursor: pointer;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+                .header-top-phone {
+                    font-size: 16px;
+                    color: $base-text-color;
+                    text-decoration: none;
+                    margin-right: 59px;
+                }
+                .header-top-actions {
+                    display: flex;
+                    align-items: center;
+                    a {
+                        margin-right: 8px;
+                        position: relative;
+                        cursor: pointer;
+                        &:last-child {
+                            margin-right: 18px;
+                        }
+                        span {
+                            position: absolute;
+                            width: 18px;
+                            height: 18px;
+                            top: 10px;
+                            right: -18px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            font-family: 'Montserrat', sans-serif;
+                            font-weight: 400;
+                            font-size: 9px;
+                            color: $base-text-color;
+                            border-radius: 50%;
+                            background-color: #b6d5b9;
+                        }
+                    }
+                }
+            }
+            .header-bottom {
+                padding-top: 16px;
+                display: flex;
+                align-items: center;
+
+                .header-bottom-menu {
+                    margin-left: 26px;
+                    margin-right: 97px;
+                    nav ul {
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+                        li {
+                            margin-right: 50px;
+                            list-style: none;
+                            border-bottom: 1px solid transparent;
+
+                            &.active {
+                                border-bottom-color: $base-text-color;
+                            }
+
+                            a{
+                                font-size: 16px;
+                                text-decoration: none;
+                                cursor: pointer;
+                                color: $base-text-color;
+                            }
+                        }
+                    }
+                }
+
+                .header-bottom-search {
+                    position: relative;
+                    &::after {
+                        content: "";
+                        background-image: url('../../../../assets/img/icons/search-normal.svg');
+                        background-size: cover;
+                        display: block;
+                        position: absolute;
+                        width: 16px;
+                        aspect-ratio: 1;
+                        left: 15px;
+                        top: 11px;
+                    }
+
+                    input {
+                        border: 1px solid $base-text-color;
+                        border-radius: 30px;
+                        padding: 10px 10px 10px 43px;
+                        width: 214px;
+                        height: 41px;
+                        box-sizing: border-box;
+                        font-size: 16px;
+                        outline: none;
+                    }
+                    .header-bottom-search-popup {
+                        width: 400px;
+                        position: absolute;
+                        top: 50px;
+                        right: 0;
+                        background-color: #fff;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        border: 1px solid #ebebeb;
+                        .search-product {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            padding: 11px 23px;
+                            cursor: pointer;
+                            gap: 25px;
+                            &:hover {
+                                background-color: #EBEBEB;
+                            }
+                            .search-product-img {
+                                width: 40px;
+                                aspect-ratio: 1;
+                                background-size: cover;
+                                background-position: center;
+                                border-radius: 5px;
+                            }
+                            .search-product-name {
+                                font-weight: 400;
+                                font-size: 16px;
+                                color: #8E8E8E;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.link-tag {
+    text-decoration: none;
+    color: #000000De;
+}

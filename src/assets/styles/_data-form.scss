@@ -1,0 +1,116 @@
+@import 'mixins';
+@import 'variables';
+
+
+.data-form {
+    max-width: 646px;
+
+    .data-form-block {
+        margin-bottom: 30px;
+
+        .data-form-label {
+            font-weight: 500;
+            font-size: 16px;
+            color: $gray-text-color;
+            margin-bottom: 20px;
+        }
+
+        .data-form-label-additional {
+            font-size: 16px;
+            line-height: 130%;
+            color: $gray-text-color;
+            margin-bottom: 20px;
+            max-width: 528px;
+        }
+
+
+        .data-form-types {
+            border-radius: 3px;
+            border: 1px solid #519057;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: max-content;
+
+            .data-form-type-item {
+                font-size: 18px;
+                color: $gray-text-color;
+                text-align: center;
+                padding: 13px 35px;
+                cursor: pointer;
+
+                &.active {
+                    background-color: #519057;
+                    color: #fff;
+                }
+            }
+        }
+
+
+        .data-form-person {
+            display: grid;
+            grid-template-columns: repeat(3, 210px);
+            grid-template-rows: 53px;
+            gap: 8px;
+        }
+
+        .data-form-address {
+            display: grid;
+            grid-template-columns: 125px 125px 162px;
+            gap: 8px;
+
+            input:first-of-type {
+                grid-column: 1/4;
+            }
+        }
+
+        .data-form-payment {
+            input {
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+
+                &:checked+label .dot {
+                    opacity: 100;
+                }
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+
+                .circle {
+                    width: 18px;
+                    aspect-ratio: 1;
+                    border: 2px solid #2A592E;
+                    border-radius: 50%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .dot {
+                        width: 9px;
+                        aspect-ratio: 1;
+                        background-color: #2A592E;
+                        border-radius: 50%;
+                        opacity: 0;
+                        transition: opacity .3s;
+                    }
+                }
+            }
+        }
+
+        .data-form-comment {
+            textarea {
+                width: 100%;
+                aspect-ratio: 646/130;
+                resize: none;
+
+            }
+        }
+
+    }
+}
