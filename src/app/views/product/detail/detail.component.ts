@@ -48,6 +48,7 @@ export class DetailComponent implements OnInit{
   }
   products: ProductType[] = [];
   count: number = 1;
+  isLogged: boolean = this.authService.getIsLoggedIn();
 
 
   constructor(

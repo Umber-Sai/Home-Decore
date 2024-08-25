@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit {
     private router : Router,
     public cartService: CartService,
     private productService: ProductService,
-    private loaderService: LoaderService,
   ) {
     this.isLogged = this.authService.getIsLoggedIn();
   }

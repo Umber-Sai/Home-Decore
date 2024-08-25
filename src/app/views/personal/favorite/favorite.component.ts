@@ -40,9 +40,13 @@ export class FavoriteComponent implements OnInit{
 
             const cartProducts = cartData as CartType
             this.products = (data as FavoriteType[]).map(product => {
-              
+              const productInCart = cartProducts.items.find(cartProduct => cartProduct.product.id === product.id)
+              if(productInCart) {
+                product.inCartCount = productInCart.quantity
+              }
               return product
-            })
+            });
+            console.log(this.products)
       })
 
         
@@ -58,6 +62,25 @@ export class FavoriteComponent implements OnInit{
 
         this.products = this.products.filter(item => item.id !== id);
       })
+  }
 
+  updateCount(id: string, quantity: number) {
+    console.log('hello')
+    this.cartService.updateCart(id, quantity)
+      .subscribe((data: CartType | DefaultResponseType) => {
+        if((data as DefaultResponseType).error) {
+          throw new Error((data as DefaultResponseType).message);
+        }
+        const updatedProductInCart = this.products.find(item => item.id === id);
+        if(updatedProductInCart) {
+          if(quantity === 0) {
+            delete updatedProductInCart?.inCartCount;
+          } else {
+            updatedProductInCart.inCartCount = quantity;
+          }
+        } else {
+          throw new Error('product not found')
+        }
+      })
   }
 }

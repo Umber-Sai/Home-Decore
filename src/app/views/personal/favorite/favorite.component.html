@@ -10,11 +10,19 @@
         <div class="favorite-products" *ngIf="products.length > 0">
 
             <div class="product" *ngFor="let product of products" >
-                <div class="product-img" style="background-image: url('{{serverStaticPath + product.image}}');"></div>
-                <div class="product-name">{{product.name}}</div>
+                <div class="product-img" style="background-image: url('{{serverStaticPath + product.image}}');" 
+                    routerLink="/product/{{product.url}}"></div>
+                <div class="product-name" routerLink="/product/{{product.url}}">{{product.name}}</div>
                 <div class="product-cost">{{product.price}} BYN</div>
-                <button class="btn product-btn" >В корзину</button>
-                <button class="btn product-btn" >В корзине</button>
+                <button class="btn product-btn" *ngIf="!product.inCartCount" (click)="updateCount(product.id, 1)">В корзину</button>
+                <div class="product-btn-in-cart" *ngIf="product.inCartCount">
+                    <count-selector [count]="product.inCartCount" (onCountChange)="updateCount(product.id, $event)"></count-selector>
+                    <button class="btn product-btn transparent btn-in-cart"  (click)="updateCount(product.id, 0)">
+                        <span>В корзине</span>
+                        <span>Удалить</span>
+                    </button>
+                </div>
+               
                 <div class="product-delete" (click)="removeFromFavorites(product.id)">
                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_1_1332)">
