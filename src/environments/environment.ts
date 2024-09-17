@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://umber-sai/api/',
-  serverStaticPath: 'https://umber-sai/images/products/'
+  api: 'http://localhost:3000/api/',
+  serverStaticPath: 'http://localhost:3000/images/products/'
 };
 
 /*
